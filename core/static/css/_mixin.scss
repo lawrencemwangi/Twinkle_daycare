@@ -1,0 +1,22 @@
+@mixin flex_center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin grid($columns){
+    display: grid;
+    grid-template-columns:1fr;
+    gap: 1.5em;
+
+    @media screen and (min-width: 726px) {
+        grid-template-columns: repeat($columns, 1fr);
+    }
+    
+}
+
+@mixin anchor{
+    text-decoration: none;
+    color:$primary-color;
+    font-size: 1.1em;
+}

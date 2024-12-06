@@ -6,10 +6,9 @@ class CustomUser(AbstractUser):
         ('admin', 'Admin'),
         ('teacher', 'Teacher'),
         ('parent', 'Parent'),
-        ('student', 'Student'),
     ]
     
-    user_level = models.CharField(max_length=10, choices=USER_LEVEL_CHOICES, default='student')
+    user_level = models.CharField(max_length=10, choices=USER_LEVEL_CHOICES, default='parent')
     phone_number = models.CharField(max_length=15, unique=True, blank=True, null=True)
 
     # Avoid reverse accessor conflicts

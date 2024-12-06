@@ -1,0 +1,33 @@
+{% load static %}
+<div class="navbar_container">
+    <div class="nav_logo">
+        <div class="image">
+            <img src="{% static 'images/logo.png' %}"  width="35px" height="35px" alt="Logo">
+        </div>
+        <a href="{% url 'home' %}">{{ school_name }}</a>
+    </div>
+
+    <div class="nav_links">
+        <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Services</a></li>
+            <li><a href="#">Contact</a></li>
+
+            {% if user.is_authenticated %}
+                <li><a href="#">Profile</a></li>
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class='logout'>Logout</button>
+                </form>
+            {% else %}
+                <li class='login'><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="burger" id="burgerIcon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
