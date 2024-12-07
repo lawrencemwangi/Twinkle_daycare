@@ -1,0 +1,109 @@
+.dashboard_container{
+    display: flex;
+
+    .dashboard_content{
+        width: calc(100% - $asidenav-width);
+        margin-left: 2%;
+        padding: 0.5em 0;
+
+        // .admin_dashboard{
+        //     @include grid(5);
+        //     gap: 0.9em;
+        //     padding: 0.9em 0;
+        //     padding-bottom: 3em;
+
+        //     .admin_items{
+        //         @include flex_center;
+        //         gap: 0.9em;
+        //         background: $table-color;
+        //         padding: 0.2em;
+        //         border-radius: 16px;
+
+        //         i,p,span{
+        //             font-size: 1.1em;
+        //         }
+        //     }
+        // }
+
+        // .analytics{
+        //     padding: 1em 0 2em;
+        //     padding-bottom: 3em;
+        //     @include grid(2);
+
+        //     .clients_analytics{
+        //         padding: 0.2em 0;
+        //         background: $secondary-color;
+        //         color: $primary-color;
+        //         padding: 0.5em;
+        //         border-radius: 12px;
+
+        //         h2{
+        //             padding-bottom: 0.3em;
+        //             text-decoration: underline;
+        //         }
+                
+        //         li{
+        //             list-style: none;
+        //             padding: 0.3em  0;  
+        //             @include grid(3);
+        //             padding: 0.2em;
+        //         }
+
+        //         .line{
+        //             border: unset;
+        //             font-weight: bold;
+        //             background: $primary-color;
+        //             color: $secondary-color;
+        //             padding: 0.2em;
+        //             border-radius: 4px;
+        //         }
+
+        //         .details{
+        //             border-bottom: 2px solid $primary-color;
+
+        //             span{
+        //                 &:nth-last-child(3){
+        //                     font-size: 0.85em;
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     ul{
+        //         list-style: none;
+        //         padding: 1.2em 0.3em;
+        //         border-radius: 12px;
+
+        //         li{
+        //             padding: 0.5em 0;
+        //             border-bottom: 2px solid $primary-color !important;
+        //             font-size: 1.1em;
+        //             color: $primary-color;
+
+        //             span{
+        //                 &:nth-last-of-type(1){
+        //                     font-weight: bold;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        // .charts{
+        //     padding: 1.5em 0.5em;
+
+        //     h2{
+        //         text-decoration: underline;
+        //     }
+            
+        //     .chart{
+        //         padding: 0.8em;
+        //         height:55vh;
+        //         width:60%;
+        //         background:$secondary-color;
+        //         border-radius: 12px;
+        //         color: $primary-color;
+        //     }
+        // }
+    }
+}

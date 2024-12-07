@@ -1,0 +1,96 @@
+$asidenav-width:15%;
+
+.adminaside_container{
+    background: $secondary-color;
+    height: 100vh;
+    position: sticky;
+    top:0;
+    left: 0;
+    padding: 0.5em;
+    width: $asidenav-width;
+    border-right: 2px solid $accent-color;
+
+    .admin_logo{
+        @include flex_center;
+        gap:0.5em;
+
+        img{
+            border-radius: 50%;
+        }
+
+        a{
+            @include anchor;
+            color:$primary-color;
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 0.9em;
+        }
+    }
+
+    .asidenav_link{
+        padding: 0.5em 0;
+
+        ul{
+            list-style: none;
+
+            li{
+                padding: 0.2em 0;
+                border-bottom: 1px solid $primary-color;
+                margin-bottom: 0.2em;
+
+                a{
+                    @include anchor;
+                    color: $primary-color;
+                    font-weight: 550;
+
+                    i{
+                        padding: 0 0.2em;
+                        font-size: 0.9em;
+                    }
+                }
+
+               &.active{
+                    background: $primary-color;
+                    border-radius: 8px;
+                    padding: 0.2em;
+
+                    a{
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .admin_profile{
+        margin-top:4.8em;
+        @include flex_center;
+        flex-direction: column;
+
+        .image{
+            img{
+                width: 60px;
+                height: 60px;
+                border: 1px solid $primary-color;
+                border-radius: 50%;
+            }
+        }
+
+        .admin_username{
+            a{
+                @include anchor;
+                color:$primary-color;
+                font-size: 1em;
+            }
+        }
+
+        form{
+            .logout{
+                padding: 0.5em 2.8em;
+                background:$danger-color;
+                font-weight: 500;
+                font-size: 1em;
+            }
+        }
+    }
+}

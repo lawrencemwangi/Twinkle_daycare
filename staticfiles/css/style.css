@@ -1,3 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  background: #F8F4F9;
+}
+
 .navbar_container {
   display: flex;
   justify-content: center;
@@ -5,115 +16,134 @@
   justify-content: space-between;
   padding: 0 0.9em;
   box-shadow: 2px 2px 3px #000000;
-  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
   height: 10vh;
   position: sticky;
   left: 0;
   top: 0;
-  z-index: 100; }
-  .navbar_container .nav_logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5em; }
-    .navbar_container .nav_logo .image img {
-      border-radius: 50%; }
-    .navbar_container .nav_logo a {
-      text-decoration: none;
-      color: #F8F4F9;
-      font-size: 1.1em;
-      font-weight: bold;
-      font-size: 1.3em;
-      color: #000000; }
-      .navbar_container .nav_logo a.active {
-        color: #d2691e; }
-  .navbar_container .nav_links ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    padding: 0 0.3em;
-    list-style: none; }
-    .navbar_container .nav_links ul li {
-      padding: 0 0.6em; }
-      .navbar_container .nav_links ul li a {
-        text-decoration: none;
-        color: #F8F4F9;
-        font-size: 1.1em;
-        font-weight: 550;
-        color: #000000; }
-      .navbar_container .nav_links ul li.active a {
-        color: #d2691e; }
-    .navbar_container .nav_links ul .profiles {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1em; }
-      .navbar_container .nav_links ul .profiles .profile a {
-        text-decoration: none;
-        color: #F8F4F9;
-        font-size: 1.1em; }
-      .navbar_container .nav_links ul .profiles .profile img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: 1px solid #000000; }
-      .navbar_container .nav_links ul .profiles .logout {
-        padding: 0.4em 0.9em;
-        background: #ff0000;
-        margin: unset; }
-    .navbar_container .nav_links ul .login {
-      background: #d2691e;
-      padding: 0.5em  1.5em;
-      border-radius: 12px;
-      border: none; }
-  .navbar_container .burger {
-    display: none;
-    cursor: pointer; }
-    .navbar_container .burger span {
-      height: 3px;
-      width: 30px;
-      display: block;
-      margin: 0.5em 0;
-      background-color: #000000;
-      color: #000000; }
+  z-index: 100;
+}
+.navbar_container .nav_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.navbar_container .nav_logo .image img {
+  border-radius: 50%;
+}
+.navbar_container .nav_logo a {
+  text-decoration: none;
+  color: #F8F4F9;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #000000;
+}
+.navbar_container .nav_logo a.active {
+  color: #d2691e;
+}
+.navbar_container .nav_links ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 0.3em;
+  list-style: none;
+}
+.navbar_container .nav_links ul li {
+  padding: 0 0.6em;
+}
+.navbar_container .nav_links ul li a {
+  text-decoration: none;
+  color: #F8F4F9;
+  font-size: 1.1em;
+  font-weight: 550;
+  color: #000000;
+}
+.navbar_container .nav_links ul li.active a {
+  color: #d2691e;
+}
+.navbar_container .nav_links ul .logout {
+  padding: 0.5em 1.2em;
+  background: #ff0000;
+  margin: unset;
+  border-radius: 4px;
+  border: none;
+}
+.navbar_container .nav_links ul .logout a {
+  color: #F8F4F9;
+  font-size: 1.1em;
+}
+.navbar_container .nav_links ul .login {
+  background: #000000;
+  padding: 0.5em 1.5em;
+  border-radius: 12px;
+  border: none;
+}
+.navbar_container .nav_links ul .login a {
+  color: #F8F4F9;
+}
+.navbar_container .burger {
+  display: none;
+  cursor: pointer;
+}
+.navbar_container .burger span {
+  height: 3px;
+  width: 30px;
+  display: block;
+  margin: 0.5em 0;
+  background-color: #000000;
+  color: #000000;
+}
 
 @media screen and (max-width: 726px) {
   .navbar_container .nav_links {
-    display: none; }
-    .navbar_container .nav_links ul {
-      display: none;
-      width: 50%;
-      height: 60vh;
-      background: #000000;
-      position: absolute;
-      flex-direction: column;
-      align-items: flex-end;
-      padding: 0.5em 1em;
-      gap: 1.5em 0;
-      top: 11vh;
-      right: 0.1em; }
-      .navbar_container .nav_links ul li {
-        width: 80%;
-        margin: auto; }
-      .navbar_container .nav_links ul .profiles {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column; }
+    display: none;
+  }
+  .navbar_container .nav_links ul {
+    display: none;
+    width: 50%;
+    height: 60vh;
+    background: #000000;
+    position: absolute;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0.5em 1em;
+    gap: 1.5em 0;
+    top: 11vh;
+    right: 0.1em;
+  }
+  .navbar_container .nav_links ul li {
+    width: 80%;
+    margin: auto;
+  }
+  .navbar_container .nav_links ul .profiles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   .navbar_container .show {
-    display: block !important; }
-    .navbar_container .show ul {
-      display: flex; }
+    display: block !important;
+  }
+  .navbar_container .show ul {
+    display: flex;
+  }
   .navbar_container .burger {
-    display: block; }
+    display: block;
+  }
   .navbar_container .active_burger span {
-    transition: transform 0.3s ease, opacity 0.3s ease; }
-    .navbar_container .active_burger span:nth-child(1) {
-      transform: rotate(-45deg) translate(-7px, 8px); }
-    .navbar_container .active_burger span:nth-child(2) {
-      opacity: 0; }
-    .navbar_container .active_burger span:nth-child(3) {
-      transform: rotate(45deg) translate(-7px, -8px); } }
-
-/*# sourceMappingURL=style.css.map */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .navbar_container .active_burger span:nth-child(1) {
+    transform: rotate(-45deg) translate(-7px, 8px);
+  }
+  .navbar_container .active_burger span:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar_container .active_burger span:nth-child(3) {
+    transform: rotate(45deg) translate(-7px, -8px);
+  }
+}/*# sourceMappingURL=style.css.map */
