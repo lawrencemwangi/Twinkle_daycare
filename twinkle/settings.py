@@ -41,8 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
+
+    # my system apps
     'authuser',
     'core',
+    'teachers',
+    'customadmin'
 ]
 
 MIDDLEWARE = [

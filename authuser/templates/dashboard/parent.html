@@ -1,1 +1,9 @@
-<h1>Welcome to {{ school_name }} teacher's dashboard</h1>
+{% extends 'dashboard/dashboard.html' %}
+
+
+{% block title %} parent's Dashboard {% endblock %}
+
+
+{% block content %}
+    <h1>Welcome to {{ school_name }} parent's Dashboard</h1>
+{% endblock  %}

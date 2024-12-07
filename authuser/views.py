@@ -62,3 +62,13 @@ class CustomLoginView(LoginView):
             return HttpResponseRedirect(f'/parent{next_url}')
         else:
             return HttpResponseRedirect(next_url)
+
+
+def role_required(user_level):
+    def decorator(view_func):
+        def _wrapped_view(request, *args, **kwargs):
+            if request.user.is_authenticated and request.user.role == role:
+                return view_func(request, *args, **kwargs)
+            return redirect('login')
+        return _wrapped_view
+    return decorator

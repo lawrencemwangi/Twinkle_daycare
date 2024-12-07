@@ -9,40 +9,43 @@
     </div>
     <div class="asidenav_link">
         <ul>
-            <li>
-                <a href="#">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
+            {% if user.user_level == 'teacher' %}
+                <li>
+                    <a href="#">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
 
-            <li>
-                <a href="#">
-                    <i class="fas fa-blog"></i>
-                    <span>Blog</span>
-                </a>
-            </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog</span>
+                    </a>
+                </li>
 
-            <li>
-                <a href="#">
-                    <i class="fas fa-comment-dots"></i>
-                    <span>Comments</span>
-                </a>
-            </li>
-            
-            <li>
-                <a href="#">
-                    <i class="fas fa-project-diagram"></i>
-                    <span>Projects</span>
-                </a>
-            </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>Comments</span>
+                    </a>
+                </li>
 
-            <li>
-                <a href="#">
-                    <i class="fas fa-file-invoice"></i>
-                    <span>Invoice</span>
-                </a>
-            </li>
+            {% elif user.User_level == 'parent' %}
+                <li>
+                    <a href="#">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-file-invoice"></i>
+                        <span>Invoice</span>
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 
@@ -55,7 +58,8 @@
             <a href="#"></a>
         </div>
 
-        <form action="#" method="post">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
             <button type="submit" class="logout">Log out</button>
         </form>
     </div>
