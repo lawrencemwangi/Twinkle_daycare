@@ -4,11 +4,40 @@
         padding: 1.2em 0;
 
         .history_infor{
-
+            p{
+                padding-bottom: 1.2em;
+                font-size: 1.1em;
+            }
         }
         .image{
-            width: 80%;
-            height: 45vh;
+            img{
+                width: 95%;
+                height: 50vh;
+                border-radius: 20px 0 20px 0;
+            }
+            
         }
+    }
+
+    .about_vision{
+        @include grid(2);
+        padding: 1.2em 0;
+
+        .vision,.mission{
+            box-shadow: 2px 2px 3px $secondary-color;
+            padding: 0.9em 0.5em;
+            border-radius: 8px;
+
+            &:hover{
+                box-shadow: 4px 4px 6px $secondary-color; 
+                transform: scale(1.05); 
+                transition: all 0.3s ease
+            }
+
+            h3{
+                padding: 0.5em 0;
+            }
+        }
+
     }
 }

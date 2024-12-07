@@ -15,6 +15,10 @@
 
             {% if user.is_authenticated %}
                 <li><a href="#">Profile</a></li>
+                {% with dashboard_url=user.user_level|stringformat:"s"|add:"_dashboard" %}
+                    <li><a href="{% url dashboard_url %}">{{ user.user_level }}</a></li>
+                {% endwith %} 
+
                 <form method="POST" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <button type="submit" class='logout'>Logout</button>

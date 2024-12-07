@@ -1,7 +1,37 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %} About Us {% endblock  %}
+{% block title %} Contact Us {% endblock  %}
 
 {% block content %}
-    <h1>Welcome to about page</h1>
+    <div class="main_container">
+        <h2>Contact Us</h2>
+        <div class="contact_container">
+            <div class="contact_infor">
+                <p><a href="mailto:twinkledaycare@gmail.com" target="_blank">twinkledaycare@gmail.com</a></p>
+                <p><a href="tel:+254799509242"> +254 799 509 242</a></p>
+            </div>
+
+            <div class="contact_form">
+                <form action="#" method="post">
+                    <div class="input_group">
+                        <div class="input_content">
+                            <input type="text" name="names" id="names"  required>
+                            <label for="names"><i class="fas fa-user-alt"></i>Names</label>
+                        </div>
+
+                        <div class="input_content">
+                            <input type="email" name="email" id="email" required >
+                            <label for="email"><i class="fas fa-envelope"></i>Email</label>
+                        </div>
+                        <div class="input_content">
+                            <textarea name="message" id="message" cols="7" rows="6" required></textarea>
+                            <label for="first_name"><i class="fas fa-comments"></i>Message</label>
+                        </div>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock  %}
