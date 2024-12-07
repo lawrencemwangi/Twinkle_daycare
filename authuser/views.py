@@ -6,25 +6,6 @@ from django.http import HttpResponseForbidden
 from django.urls import reverse
 
 # Create your views here.
-
-# class CustomLoginView(LoginView):
-#     template_name = 'login.html'  # Path to your login template
-
-#     def form_valid(self, form):
-#         # Get the logged-in user
-#         user = form.get_user()
-#         login(self.request, user) 
-
-#         # Redirect user based on their user_level
-#         if user.user_level == 'admin':
-#             return HttpResponseRedirect('/admin/dashboard/') 
-#         elif user.user_level == 'teacher':
-#             return HttpResponseRedirect('/teacher/dashboard/')  
-#         elif user.user_level == 'parent':
-#             return HttpResponseRedirect('/parent/dashboard/')  
-#         else:
-#             return HttpResponseRedirect('/') 
-
 # admin
 def admin_dashboard(request):
     if request.user.user_level != 'admin':
@@ -41,7 +22,7 @@ def teacher_dashboard(request):
 def parent_dashboard(request):
     if request.user.user_level != 'parent':
         return HttpResponseForbidden("You are not authorized to view this page.")
-    return render(request, 'dashbard/parent_dashboard.html') 
+    return render(request, 'dashboard/parent_dashboard.html') 
 
 
 class CustomLoginView(LoginView):

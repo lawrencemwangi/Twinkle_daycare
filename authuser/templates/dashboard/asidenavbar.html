@@ -19,30 +19,93 @@
 
                 <li>
                     <a href="#">
-                        <i class="fas fa-blog"></i>
-                        <span>Blog</span>
+                        <i class="fas fa-user-plus"></i>
+                        <span>Enrollment</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-child"></i>
+                        <span>Children</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-file"></i>
+                        <span>Reports</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
                         <i class="fas fa-comment-dots"></i>
-                        <span>Comments</span>
-                    </a>
-                </li>
-
-            {% elif user.User_level == 'parent' %}
-                <li>
-                    <a href="#">
-                        <i class="fas fa-project-diagram"></i>
-                        <span>Projects</span>
+                        <span>Schedules</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
-                        <i class="fas fa-file-invoice"></i>
-                        <span>Invoice</span>
+                        <i class="fas fa-calendar-day"></i>
+                        <span>Daily Record</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Incident Rports</span>
+                    </a>
+                </li>
+
+            {% elif user.user_level == 'parent' %}
+                <li>
+                    <a href="#">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-child"></i>
+                        <span>Child Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-wallet"></i>
+                        <span>Payment</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-file"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Incident Rports</span>
                     </a>
                 </li>
             {% endif %}
@@ -51,11 +114,11 @@
 
     <div class="admin_profile">
         <div class="image">
-            <img src="#" alt="name">
+            <img src="{% static 'images/logo.png' %}" alt="name">
         </div>
 
         <div class="admin_username">
-            <a href="#"></a>
+            <a href="#">{{ user.first_name }} {{ user.last_name }}</a>
         </div>
 
         <form action="{% url 'logout' %}" method="post">

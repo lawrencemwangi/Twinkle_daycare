@@ -63,14 +63,16 @@ $asidenav-width:15%;
     }
 
     .admin_profile{
-        margin-top:4.8em;
+        position: fixed;
+        bottom: 2%;
+        left:center;
         @include flex_center;
         flex-direction: column;
 
         .image{
             img{
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
                 border: 1px solid $primary-color;
                 border-radius: 50%;
             }
@@ -85,11 +87,15 @@ $asidenav-width:15%;
         }
 
         form{
-            .logout{
-                padding: 0.5em 2.8em;
+            button{
+                border: none;
+                border-radius: 4px;
+                margin: 0.8em 0;
+                padding: 0.6em 2.8em;
                 background:$danger-color;
                 font-weight: 500;
-                font-size: 1em;
+                font-size: 1.1em;
+                color: $primary-color;
             }
         }
     }
