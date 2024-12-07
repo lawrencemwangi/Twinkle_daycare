@@ -1,0 +1,44 @@
+{% load static %}
+{% load sass_tags %}
+
+
+<div class="footer_container">
+    <div class="footer_content">
+        <div class="footer_infor">
+            <div class="footer_image">
+                <img src="{% static 'images/logo.png' %}" alt="Logo">
+            </div>
+            <p>{{ school_name }}</p>
+            <p>Nurturing creativity, learning, and growth in young children.</p>
+            <p>P.O.Box 111-10202, Kiambu</p>
+            <p>Kiambu, Kenya</p>
+        </div>
+
+        <div class="footer_links">
+            <h3>Links</h3>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+
+       <div class="footer_contact">
+            <h3>Social Media</h3>
+            <div class="social_media">
+                <a href="https://www.instagram.com/lawrenzo.mwangi/" target="_blank" rel="noopener noreferrer">
+                    <img src="{% static 'images/instagram.png' %}" alt="instagram icon">
+                </a>
+                <a href="https://www.linkedin.com/in/lawrencemwangi/" target="_blank">
+                    <img src="{% static 'images/linkedin.png' %}" alt="linkedin icon">
+                </a>
+                <a href="http://wa.me/254799509242?text='Hello Lawnet developers'" target="_blank" rel="noopener noreferrer">
+                    <img src="{% static 'images/whatsapp.png' %}" alt="whatapp icon">
+                </a>
+            </div>
+            <p>
+                <a href="mailto:twinkledaycare@gmail.com" target="_blank" rel="noopener noreferrer">twinkledaycare@gmail.com</a>
+            </p>
+            <a href="tel:+254799509242">+254 799 509 242</a>
+       </div>
+
+    </div>
+</div>

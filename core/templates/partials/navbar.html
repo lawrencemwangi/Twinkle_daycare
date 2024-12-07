@@ -9,9 +9,9 @@
 
     <div class="nav_links">
         <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Our Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{% url 'about_page' %}">About Us</a></li>
+            <li><a href="{% url 'service_page' %}">Our Services</a></li>
+            <li><a href="{% url 'contact_page' %}">Contact</a></li>
 
             {% if user.is_authenticated %}
                 <li><a href="#">Profile</a></li>

@@ -1,0 +1,29 @@
+.home_container{
+    .home_infor{
+        .choose_content{
+            @include grid(2);
+            padding: 1.2em 0;
+        }
+    }
+
+
+    .home_facilities{
+        p{
+            padding: 0.5em 0;
+            font-size: 1.1em;
+        }
+        
+        .facilities_content{
+            @include grid(3);
+            padding: 1em 0;
+
+            .facilities{
+                img{
+                    width:80%;
+                    height:45vh;
+                    border-radius: 20px;
+                }
+            }
+        }
+    }
+}

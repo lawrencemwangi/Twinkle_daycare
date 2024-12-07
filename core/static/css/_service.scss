@@ -1,0 +1,70 @@
+.service_container{
+    .service_content{
+        @include grid(3);
+        padding: 1.2em 0;
+        gap: 2em;
+
+        .service_items{
+            box-shadow: 1px 1px 3px $secondary-color;
+            padding: 0.9em;
+            border-radius: 8px;
+
+            &:hover{
+                box-shadow: 3px 3px 4px $secondary-color; 
+                transform: scale(1.02); 
+                transition: all 0.3s ease
+            }
+
+            h2 {
+                text-decoration: underline;
+            }
+
+            h2,h4{
+                padding: 0.3em 0;
+
+            }
+
+            p{
+                font-size: 1.1em;
+                padding: 0.5em 0;
+
+                span{
+                    font-weight: bold;
+                }
+            }
+
+            ul{
+                list-style:circle;
+                padding: 0 0.9em;
+            }
+
+            .price{
+                span{
+                    color: $success-color;
+                    font-size: 1.2em;
+                }
+            }
+
+            a{
+                @include anchor;
+                color: $secondary-color;
+                margin:  0.9em 0;
+                background: $accent-color;
+                padding: 0.4em 1.2em;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    .thanks{
+        padding: 0.9em 0;
+        
+        p{
+            font-size: 1.1em;
+        }
+
+        h3{
+            padding: 0.5em 0;
+        }
+    }
+}

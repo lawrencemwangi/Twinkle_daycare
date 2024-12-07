@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} About Us {% endblock  %}
+
+{% block content %}
+    <div class="about_container main_container">
+        <h1>Our History</h1>
+        <div class="history">
+            <div class="history_infor">
+                <p>Twinkle Daycare began with a vision to provide a safe, nurturing space where children could grow,
+                    learn, and thrive. Established to support busy parents, we set out to create an environment that
+                    feels like a second home. Over the years, we’ve expanded, integrating modern childcare techniques
+                    while maintaining our warm, family-like atmosphere
+                </p>
+                <p>From interactive learning to fun-filled play areas, we’ve dedicated ourselves to fostering creativity, 
+                    curiosity, and confidence in every child. Today, Twinkle Daycare is proud to be a trusted partner in 
+                    early childhood development, helping young minds shine bright and preparing them for a bright future.
+                </p>
+            </div>
+        
+            <div class="image">
+                <img src="{% static 'images/daycare.jpg' %}" alt="{{ school_name }}">
+            </div>
+        </div>
+
+        <div class="about_vision">
+            <div class="mission">
+                <h3>Our Mission</h3>
+                
+                <p>To offer quality childcare with a focus on creativity, development, and emotionalwell-being, ensuring
+                    a strong foundation for lifelong learning.
+                </p>
+            </div>
+
+            <div class="vision">
+                <h3>Our Vision</h3>
+
+                <p>To provide a safe, nurturing environment where every child can grow, learn,
+                    and reach their full potential.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock  %}

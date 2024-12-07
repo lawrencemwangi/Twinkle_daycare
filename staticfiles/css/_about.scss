@@ -1,0 +1,14 @@
+.about_container{
+    .history{
+        @include grid(2);
+        padding: 1.2em 0;
+
+        .history_infor{
+
+        }
+        .image{
+            width: 80%;
+            height: 45vh;
+        }
+    }
+}
