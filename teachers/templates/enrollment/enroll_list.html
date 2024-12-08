@@ -1,0 +1,69 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Enrollment {% endblock  %}
+
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        setTimeout(function() {
+            const messages = document.querySelector('.messages');
+            if (messages) {
+                messages.style.transition = 'opacity 0.5s ease';
+                messages.style.opacity = '0'; 
+                setTimeout(() => messages.remove(), 500); 
+            }
+        }, 5000);
+    </script>
+    {% endif %}
+
+    <div class="user_container">
+        <div class="title">
+            <h1>Enrollment</h1>
+            <a href="{% url 'enroll_child' %}">Add New</a>
+        </div>
+        
+        <div class="user_content">
+            <div class="user_details">
+                <span  class="user-col">first Name</span>
+                <span class="user-col">Last Name </span>
+                <span class="user-col">DOB</span>
+                <span class="user-col">Gender</span>
+                <span class="user-col">Address</span>
+                <span class="user-col">Admission Number</span>
+                <span class="user-col">Age(Years)</span>
+                <span class="user-col">Enrollment status</span>
+                <span class="user-col">Action</span>
+            </div>
+    
+            {% for enrolment in enrolments  %}
+                <div class="user_infor">
+                    <span class="user-col">{{ enrolment.first_name }}</span>
+                    <span class="user-col email">{{ enrolment.last_name }}</span>
+                    <span class="user-col">{{ enrolment.birth_date }}</span>
+                    <span class="user-col">{{ enrolment.gender }}</span>
+                    <span class="user-col">{{ enrolment.address }}</span>
+                    <span class="user-col">{{ enrolment.admission_number }}</span>
+                    <span class="user-col">{{ enrolment.age }}</span>
+                    <span class="user-col">{{ enrolment.enrollment_status }}</span>
+                    <span class="action">
+                        <a href="#">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+
+                        <form action="#" method="post">
+                            <a href="#">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </form>
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock  %}

@@ -1,0 +1,98 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Enrollment {% endblock  %}
+
+{% block content %}
+<div class="custom_form">
+    <h1>Enroll Child</h1>
+
+    <form  method="post">
+        {% csrf_token %}
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <div class="input_group">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name" placeholder="john"  required>        
+        </div>
+
+        <div class="input_group">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name" placeholder="Mwangi" required>
+        </div>
+
+        <div class="input_group">
+            <label for="birth_date">Date of Birth</label>
+            <input type="date" name="birth_date" id="birth_date" required>
+        </div>
+
+        <div class="input_group">
+            <label for="address"></label>
+            <input type="text" name="address" id="address" placeholder="kirigi, kiambu" required>
+        </div>
+        
+        <div class="input_group">
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+                <option value="M" {% if child.gender == 'M' %}selected{% endif %}>Male</option>
+                <option value="F" {% if child.gender == 'F' %}selected{% endif %}>Female</option>
+            </select>
+        </div>
+
+        <div class="input_group">
+            <label for="parent">Parent</label>
+            <select name="parent" id="parent">
+                {% for parent in parents %}
+                    <option value="{{ parent.id }}">
+                        {{ parent.first_name }} {{ parent.last_name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="input_group">
+            <label for="admission_number">Admission Number</label>
+            <input type="text" name="admission_number" id="admission_number" placeholder="twinkle-001" required>
+        </div>
+
+        <div class="input_group">
+            <label for="emg_contact">EmergencyNumber</label>
+            <input type="number" name="emg_contact" id="emg_contact" placeholder="0700000000" required>
+        </div>
+
+        <div class="input_group">
+            <label for="grade"> Grade</label>
+            <input type="text" name="grade" id="grade" placeholder="pp1" required>
+        </div>
+
+        <div class="input_group">
+            <label for="allergies">Allergies</label>
+            <textarea name="allergies" id="allergies" cols="7" rows="5" placeholder="Type the allergies"></textarea>
+        </div>
+
+        <div class="input_group">
+            <label for="medication">Medication</label>
+            <textarea name="medication" id="medication" cols="7" rows="5" placeholder="Type the medication"></textarea>
+        </div>
+
+        <div class="input_group">
+            <label for="medical_conditions">Medical Conditions</label>
+            <textarea name="medical_conditions" id="medical_conditions" cols="7" rows="5" placeholder="Type the medical conditions"></textarea>
+        </div>
+
+        <div class="input_group">
+            <label for="id_enrollment_status">Gender</label>
+            <select name="enrollment_status" id="id_enrollment_status">
+                <option value="pending" {% if form.enrollment_status.value == "pending" %}selected{% endif %}>Pending</option>
+                <option value="completed" {% if form.enrollment_status.value == "completed" %}selected{% endif %}>Completed</option>
+                <option value="cancelled" {% if form.enrollment_status.value == "cancelled" %}selected{% endif %}>Cancelled</option>
+            </select>
+        </div>
+
+        <button type="submit">Enroll Child</button>
+    </form>
+</div>
+{% endblock  %}

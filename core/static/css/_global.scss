@@ -40,17 +40,23 @@ body{
             background-color: $warning-color;
             color: $warning-color;
         }
-
-        // &.info {
-        //     background-color: $info-bg;
-        //     color: $info-text;
-        //     border-color: $info-border;
-        // }
     }
 }
 
 .text_danger{
     color: $danger-color;
+}
+
+.text_success{
+    color: $success-color;
+}
+
+.text_warning{
+    color: $warning-color;
+}
+
+.default {
+    color: gray;
 }
 
 .btn_danger{

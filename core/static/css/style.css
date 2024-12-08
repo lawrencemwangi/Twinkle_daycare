@@ -43,6 +43,18 @@ body {
   color: #ff0000;
 }
 
+.text_success {
+  color: #008000;
+}
+
+.text_warning {
+  color: #c28005;
+}
+
+.default {
+  color: gray;
+}
+
 .btn_danger {
   background: #ff0000;
   color: #F8F4F9;
