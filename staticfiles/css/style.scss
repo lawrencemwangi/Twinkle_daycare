@@ -2,6 +2,7 @@
 @import 'variables';
 @import 'mixin';
 @import 'global';
+@import 'form';
 
 
 
@@ -12,10 +13,10 @@
 @import 'footer';
 
 
-
 //main styles
 @import 'hero';
 @import 'home';
 @import 'about';
 @import 'service';
 @import 'contact';
+@import 'user';

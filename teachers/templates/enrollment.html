@@ -1,0 +1,23 @@
+{% extends "dashboard/dashboard.html" %}
+
+{% block title %} Enrollment {% endblock  %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+
+        <div>
+            <h3>Parent Information</h3>
+            {{ parent_form.as_p }}
+        </div>
+        <div>
+            <h3>Health Record</h3>
+            {{ health_record_form.as_p }}
+        </div>
+        <div> 
+            <h3>Child Information</h3>
+            {{ child_form.as_p }}
+        </div>
+        <button type="submit">Enroll Child</button>
+    </form>
+{% endblock  %}

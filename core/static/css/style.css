@@ -14,6 +14,173 @@ body {
   margin: 0 0 3em;
 }
 
+.messages {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+.messages li {
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border: 1px solid;
+  font-size: 14px;
+}
+.messages li.success {
+  background-color: #008000;
+  color: #F8F4F9;
+}
+.messages li.error {
+  background-color: #ff0000;
+  color: #ff0000;
+}
+.messages li.warning {
+  background-color: #c28005;
+  color: #c28005;
+}
+
+.text_danger {
+  color: #ff0000;
+}
+
+.btn_danger {
+  background: #ff0000;
+  color: #F8F4F9;
+  font-size: 1.1em;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.4em 0.5em;
+  font-size: 1.1em;
+  border-radius: 4px;
+  border: 1px solid grey;
+  margin: 0.5em 0 0;
+}
+form button {
+  padding: 6px 18px;
+  margin: 0.9em 0 0;
+  border: none;
+  font-size: 1.1em;
+  border-radius: 8px;
+  background: #000000;
+  color: #F8F4F9;
+  cursor: pointer;
+}
+
+.custom_form {
+  padding: 0.5em;
+  border-radius: 12px;
+}
+.custom_form h1 {
+  text-align: center;
+  font-size: 1.1em;
+  padding: 0.5em 0;
+  margin: 0 0 0.3em;
+}
+.custom_form form .input_group {
+  padding: 0.3em 0;
+  width: 100%;
+  margin: 0 0 0.3em;
+}
+.custom_form form .input_group label {
+  font-weight: 500;
+  font-size: 0.95em;
+}
+.custom_form form .input_group span {
+  font-size: 1.1em;
+  font-weight: 550;
+}
+.custom_form form .input_group .subject-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.custom_form form .input_group .subject-list .subject-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.custom_form form .input_group .custom_radio_buttons {
+  display: flex;
+}
+.custom_form form .input_group .custom_radio_buttons label {
+  padding: 0.3em 0.2em;
+  position: relative;
+  cursor: pointer;
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+.custom_form form .input_group .custom_radio_buttons label .option_radio {
+  position: relative;
+  margin: 0 0.2em 0 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: auto;
+  border: unset;
+}
+.custom_form form .input_group .custom_radio_buttons label .option_radio:before {
+  transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+  transform: scale(0, 0);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0.125rem;
+  z-index: 1;
+  width: 0.75rem;
+  height: 0.75rem;
+  background: #16a085;
+  border-radius: 50%;
+}
+.custom_form form .input_group .custom_radio_buttons label .option_radio:checked:before {
+  transform: scale(1, 1);
+}
+.custom_form form .input_group .custom_radio_buttons label .option_radio:after {
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: -0.125rem;
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  border: 2px solid #d6d6d6;
+  border-radius: 50%;
+}
+.custom_form form .group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+}
+@media screen and (min-width: 726px) {
+  .custom_form form .group {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.custom_form form .groups {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+}
+@media screen and (min-width: 726px) {
+  .custom_form form .groups {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.custom_form form .checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.custom_form p {
+  margin: 0.8em 0 0.5em;
+}
+
 .navbar_container {
   display: flex;
   justify-content: center;
@@ -617,4 +784,72 @@ body {
   .contact_container .contact_form .input_group .names {
     display: unset;
   }
+}
+.user_container .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.2em;
+}
+.user_container .title a {
+  text-decoration: none;
+  color: #F8F4F9;
+  font-size: 1.1em;
+  background: #000000;
+  padding: 0.4em;
+  font-size: 1.1em;
+  border-radius: 8px;
+}
+.user_container .user_content {
+  padding: 0.9em;
+}
+.user_container .user_content .user_details,
+.user_container .user_content .user_infor {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  padding: 0.3em 0;
+}
+.user_container .user_content .user_details {
+  background: #000000;
+  color: #F8F4F9;
+  font-weight: bold;
+}
+.user_container .user_content .user_details span {
+  border-right: 1.5px solid #F8F4F9;
+}
+.user_container .user_content .user_infor {
+  color: #000000;
+  border-bottom: 1px solid #000000;
+}
+.user_container .user_content .user_infor .action {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+}
+@media screen and (min-width: 726px) {
+  .user_container .user_content .user_infor .action {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.user_container .user_content .user_infor .action .fa-trash {
+  color: #ff0000;
+}
+.user_container .user_content .user_infor .action a {
+  text-decoration: none;
+  color: #F8F4F9;
+  font-size: 1.1em;
+  text-align: center;
+  color: #008000;
+  font-weight: bold;
+}
+.user_container .user_content .user-col {
+  padding: 0.5em;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.user_container .user_content .user-col.email {
+  max-width: 200px;
 }/*# sourceMappingURL=style.css.map */

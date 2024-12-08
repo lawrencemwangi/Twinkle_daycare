@@ -1,0 +1,39 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Update Parent {% endblock  %}
+
+{% block content %}
+    <div class="custom_form">
+        <h1>{% if parent  %} Update Parent {% else%} Create Parent{% endif %}</h1>
+
+        <form action="#" method="post">
+            {% csrf_token %}
+
+            <div class="input_group">
+                <label for="first_name">First Name</label><span>*</span>
+                <input type="text" name="first_name" id="first_name" placeholder="john" value="{{ parent.first_name }}" required>        
+            </div>
+
+            <div class="input_group">
+                <label for="last_name">Last Name</label> <span>*</span>
+                <input type="text" name="last_name" id="last_name" placeholder="Mwangi" value="{{ parent.last_name }}" required>
+            </div>
+
+            <div class="input_group">
+                <label for="email">Email</label><span>*</span>
+                <input type="email" name="email" id="email" placeholder="user@gmail.com" value="{{ parent.email }}" required>
+            </div>
+
+            <div class="input_group">
+                <label for="phone_number">Phone Number</label><span>*</span>
+                <input type="number" name="phone_number" id="phone_number" placeholder="0712345678" value="{{ parent.phone_number }}" required>
+            </div>
+
+            <button type="submit">Save New</button>
+        </form>
+    </div>
+{% endblock  %}
+
+
+

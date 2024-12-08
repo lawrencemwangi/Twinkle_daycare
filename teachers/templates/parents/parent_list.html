@@ -1,0 +1,61 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Parents {% endblock  %}
+
+{% block content %} 
+    <div class="user_container">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            <script>
+                setTimeout(function() {
+                    const messages = document.querySelector('.messages');
+                    if (messages) {
+                        messages.style.transition = 'opacity 0.5s ease';
+                        messages.style.opacity = '0'; 
+                        setTimeout(() => messages.remove(), 500); 
+                    }
+                }, 5000);
+            </script>
+        {% endif %}
+
+        <div class="title">
+            <h1>Parents</h1>
+            <a href="{% url 'add_parents' %}">Add New</a>
+        </div>
+        
+        <div class="user_content">
+            <div class="user_details">
+                <span  class="user-col">First Name</span>
+                <span class="user-col">Last Name</span>
+                <span class="user-col email">Email </span>
+                <span class="user-col">Phone No.</span>
+                <span class="user-col">Action</span>
+            </div>
+        
+            {% for parent in parents  %}
+                <div class="user_infor">
+                    <span class="user-col">{{ parent.first_name }}</span>
+                    <span class="user-col">{{ parent.last_name }}</span>
+                    <span class="user-col email">{{ parent.email }}</span>
+                    <span class="user-col">{{ parent.phone_number }}</span>
+                    <span class="action">
+                        <a href="{% url 'update_parent' parent.pk %}">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+
+                        <form  method="post">
+                            <a href="{% url 'delete_parent' parent.pk %}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </form>
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock  %}

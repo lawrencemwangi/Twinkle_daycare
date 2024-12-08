@@ -52,7 +52,7 @@
             textarea{
                 width: 100%;
                 padding: 0.9em 1em;
-                color:$primary-color;
+                color:$secondary-color;
                 background: $primary-color;
                 border-radius: 5px;
                 transition: all 0.3s ease-in-out; 
@@ -63,10 +63,10 @@
             input:valid~label,
             textarea:focus~label,
             textarea:valid~label{
-                top:5px;
+                top:-3px;
                 opacity: 1;
-                background:$primary-color;
-                color: $secondary-color;
+                background:$secondary-color;
+                color: $primary-color;
                 font-size: 0.85em;
                 font-weight: 600;
                 padding: 0.2em;

@@ -1,0 +1,69 @@
+.user_container {
+    .title{
+        @include flex_center;
+        justify-content: space-between;
+        padding: 0 1.2em;
+
+        a{
+            @include anchor;
+            background: $secondary-color;
+            padding: 0.4em;
+            font-size: 1.1em;
+            border-radius: 8px;
+        }
+    }
+
+    .user_content {
+        padding: 0.9em;
+
+        .user_details,
+        .user_infor {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            padding: 0.3em 0;
+        }
+
+        .user_details {
+            background: $secondary-color;
+            color: $primary-color;
+            font-weight: bold; 
+            
+            span{
+                border-right: 1.5px solid $primary-color;
+            }
+        }
+
+        .user_infor {
+            color: $secondary-color;
+            border-bottom: 1px solid $secondary-color;
+
+            .action{
+                @include grid(2);
+
+                .fa-trash{
+                    color:$danger-color;
+                }
+                
+                a{
+                    @include anchor;
+                    text-align: center;
+                    color:$success-color;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .user-col {
+            padding: 0.5em;
+            text-align: left; 
+            white-space: nowrap; 
+            overflow: hidden;    
+            text-overflow: ellipsis; 
+        }
+        
+        .user-col.email {
+            max-width: 200px;
+        }
+        
+    }
+}

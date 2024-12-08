@@ -13,3 +13,48 @@ body{
     padding: 1.2em 2em;
     margin: 0 0 3em;
 }
+
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+
+    li {
+        padding:10px;
+        margin-bottom: 5px;
+        border-radius:4px;
+        border: 1px solid;
+        font-size: 14px;
+
+        &.success {
+            background-color: $success-color;
+            color: $primary-color;
+        }
+
+        &.error {
+            background-color: $danger-color;
+            color: $danger-color;
+        }
+
+        &.warning {
+            background-color: $warning-color;
+            color: $warning-color;
+        }
+
+        // &.info {
+        //     background-color: $info-bg;
+        //     color: $info-text;
+        //     border-color: $info-border;
+        // }
+    }
+}
+
+.text_danger{
+    color: $danger-color;
+}
+
+.btn_danger{
+    background: $danger-color;
+    color: $primary-color;
+    font-size: 1.1em;
+}
