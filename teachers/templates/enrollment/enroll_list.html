@@ -52,12 +52,12 @@
                     <span class="user-col">{{ enrolment.age }}</span>
                     <span class="user-col">{{ enrolment.enrollment_status }}</span>
                     <span class="action">
-                        <a href="#">
+                        <a href="{% url 'update_enroll' enrolment.pk %}">
                             <i class="fas fa-pencil-alt"></i>
                         </a>
 
-                        <form action="#" method="post">
-                            <a href="#">
+                        <form method="post">
+                            <a href="{% url 'delete_enroll' enrolment.pk %}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </form>

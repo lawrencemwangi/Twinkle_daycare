@@ -44,7 +44,10 @@ def delete_parent(request,pk):
         parent.delete()
         messages.success(request, "Parent deleted successfully.")
         return redirect('parents')
-    return render(request, 'parents/delete_parent.html',{'parent':parent})
+    return render(request, 'delete_confirm.html',{
+        'item_type': 'Parent',
+        'item_name': parent.first_name,
+    })
 
 
 
@@ -101,8 +104,50 @@ def add_enroll(request):
     
     else:
         parents = CustomUser.objects.filter(user_level='parent') 
-        return render(request, 'enrollment/enrollment.html', {'parents': parents})
+ 
+ 
 
+def update_enroll(request,pk):
+    enrollment = get_object_or_404(Enrollment,pk=pk)
+    parents = CustomUser.objects.filter(user_level='parent')
+
+    if request.method == 'POST':
+        enrollment.first_name = request.POST.get('first_name')
+        enrollment.last_name = request.POST.get('last_name')
+        # enrollment.birth_date = request.POST.get('birth_date') 
+        enrollment.gender = request.POST.get('gender')
+        enrollment.address = request.POST.get('address', '')
+        enrollment.admission_number = request.POST.get('admission_number')
+        enrollment.allergies = request.POST.get('allergies', '')
+        enrollment.medication = request.POST.get('medication', '')
+        enrollment.medical_conditions = request.POST.get('medical_conditions', '')
+        enrollment.emg_contact = request.POST.get('emg_contact')
+        enrollment.grade = request.POST.get('grade')
+        enrollment.parent_id = CustomUser.objects.get(id=request.POST.get('parent'))
+
+        birth_date = request.POST.get('birth_date')
+        if birth_date:
+            enrollment.birth_date = date.fromisoformat(birth_date)
+        # enrollment.parent_id = request.POST.get('parent')
+        enrollment.save()
+        messages.success(request, "Child enrollment updated successfully.")
+
+        return redirect('enroll')
+    return render(request, 'enrollment/update_enrollment.html', {'enrollment':enrollment,'parents': parents,})
+
+
+
+def delete_enroll(request,pk):
+    enrollment=get_object_or_404(Enrollment,pk=pk)
+    if request.method == 'POST':
+        enrollment.delete()
+        messages.success(request, "Enrollment deleted successfully.")
+        return redirect('enroll')
+    return render(request, 'delete_confirm.html',{
+        'item_type': 'Enrollment',
+        'item_name': enrollment.first_name,
+    })
+        
 
 
 

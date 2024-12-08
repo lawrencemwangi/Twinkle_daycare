@@ -1,0 +1,11 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+
+{% extends "base_delete_confirmation.html" %}
+
+{% block content %}
+    {% with "Enrollment" as item_type parent.first_name as item_name %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

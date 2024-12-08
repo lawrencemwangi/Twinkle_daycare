@@ -1,0 +1,15 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Delete {{ item_type }} {% endblock %}
+
+{% block content %}
+    <h1> Delete {{ item_type }}</h1>
+    <p>Are you sure you want to delete "<span class="text_danger">{{ item_name }}</span>"?</p>
+
+    <form method="post">
+        {% csrf_token %} 
+
+        <button type="submit" class="btn_danger">Yes, Delete</button>
+    </form>
+{% endblock %}

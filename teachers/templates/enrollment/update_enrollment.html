@@ -5,36 +5,32 @@
 
 {% block content %}
 <div class="custom_form">
-    <h1>Enroll Child</h1>
+    <h1>Update Enrollment details</h1>
 
     <form  method="post">
         {% csrf_token %}
 
-        {% if error %}
-            <p class="error">{{ error }}</p>
-        {% endif %}
-
-        <div class="groups">
+       <div class="groups">
             <div class="input_group">
                 <label for="first_name">First Name</label>
-                <input type="text" name="first_name" id="first_name" placeholder="john"  required>        
+                <input type="text" name="first_name" id="first_name" placeholder="john" value="{{ enrollment.first_name }}" required>        
             </div>
-    
+
             <div class="input_group">
                 <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" id="last_name" placeholder="Mwangi" required>
+                <input type="text" name="last_name" id="last_name" placeholder="Mwangi" value="{{ enrollment.last_name }}" required>
             </div>
-    
+
             <div class="input_group">
                 <label for="birth_date">Date of Birth</label>
-                <input type="date" name="birth_date" id="birth_date" required>
+                <input type="date" name="birth_date" id="birth_date" value="{{ enrollment.birth_date|date:'Y-m-d' }}" required>
             </div>
-        </div>
+       </div>
 
-        <div class="groups">
+       <div class="groups">
             <div class="input_group">
                 <label for="address">Address</label>
-                <input type="text" name="address" id="address" placeholder="kirigi, kiambu" required>
+                <input type="text" name="address" id="address" placeholder="kirigi, kiambu"  value="{{ enrollment.address }}" required>
             </div>
             
             <div class="input_group">
@@ -49,46 +45,45 @@
                 <label for="parent">Parent</label>
                 <select name="parent" id="parent">
                     {% for parent in parents %}
-                        <option value="{{ parent.id }}">
-                            {{ parent.first_name }} {{ parent.last_name }}
+                    <option value="{{ parent.id }}" {% if parent.id == enrollment.parent.id %}selected{% endif %}>                            {{ parent.first_name }} {{ parent.last_name }}
                         </option>
                     {% endfor %}
                 </select>
             </div>
-        </div>
+       </div>
 
-        <div class="groups">
+       <div class="groups">
             <div class="input_group">
                 <label for="admission_number">Admission Number</label>
-                <input type="text" name="admission_number" id="admission_number" placeholder="twinkle-001" required>
+                <input type="text" name="admission_number" id="admission_number" placeholder="twinkle-001" value="{{ enrollment.admission_number }}" required>
             </div>
-    
+
             <div class="input_group">
                 <label for="emg_contact">EmergencyNumber</label>
-                <input type="number" name="emg_contact" id="emg_contact" placeholder="0700000000" required>
+                <input type="number" name="emg_contact" id="emg_contact" placeholder="0700000000" value="{{ enrollment.emg_contact }}" required>
             </div>
-    
+
             <div class="input_group">
                 <label for="grade"> Grade</label>
-                <input type="text" name="grade" id="grade" placeholder="pp1" required>
+                <input type="text" name="grade" id="grade" placeholder="pp1" value="{{ enrollment.grade }}" required>
             </div>
-        </div>
+       </div>
 
-        <div class="group">
+       <div class="group">
             <div class="input_group">
                 <label for="allergies">Allergies</label>
-                <textarea name="allergies" id="allergies" cols="7" rows="5" placeholder="Type the allergies"></textarea>
+                <textarea name="allergies" id="allergies" cols="7" rows="5" placeholder="Type the allergies">{{ enrollment.allergies }}</textarea>
             </div>
-    
+
             <div class="input_group">
                 <label for="medication">Medication</label>
-                <textarea name="medication" id="medication" cols="7" rows="5" placeholder="Type the medication"></textarea>
+                <textarea name="medication" id="medication" cols="7" rows="5" placeholder="Type the medication">{{ enrollment.medication }}</textarea>
             </div>
-        </div>
+       </div>
 
         <div class="input_group">
             <label for="medical_conditions">Medical Conditions</label>
-            <textarea name="medical_conditions" id="medical_conditions" cols="7" rows="5" placeholder="Type the medical conditions"></textarea>
+            <textarea name="medical_conditions" id="medical_conditions" cols="7" rows="5" placeholder="Type the medical conditions">{{ enrollment.medical_conditions }}</textarea>
         </div>
 
         <div class="input_group">
