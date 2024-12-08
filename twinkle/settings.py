@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'authuser',
     'core',
     'teachers',
-    'customadmin'
+    'customadmin',
+    'parents'
 ]
 
 MIDDLEWARE = [

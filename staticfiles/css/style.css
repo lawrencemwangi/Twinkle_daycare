@@ -43,10 +43,49 @@ body {
   color: #ff0000;
 }
 
+.text_success {
+  color: #008000;
+}
+
+.text_warning {
+  color: #c28005;
+}
+
+.default {
+  color: gray;
+}
+
 .btn_danger {
   background: #ff0000;
   color: #F8F4F9;
   font-size: 1.1em;
+}
+
+.child_infor {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+  padding: 1.2em 0;
+}
+@media screen and (min-width: 726px) {
+  .child_infor {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.child_infor p {
+  font-size: 1.1em;
+  padding: 0.4em 0;
+}
+.child_infor p span {
+  padding: 0 0.5em;
+  font-weight: 550;
+}
+
+.login_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: blue;
 }
 
 form input,

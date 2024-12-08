@@ -1,23 +1,37 @@
-{% comment %} <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form> {% endcomment %}
+{% load static %}
+{% load sass_tags %}
 
-<form method="post" class="custom-form">
-    {% csrf_token %}
-    
-    <div class="form-group">
-        <label for="id_username">Username</label>
-        {{ form.username }}
-        <small class="form-error">{{ form.username.errors }}</small>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% sass_src 'css/style.scss' %}">
+</head>
+<body>
+    <div class="login_container">
+        <h1>Login</h1>
+        <form  method="post">
+            {% csrf_token %}
+
+            <div class="input_group">
+                <label for="id_username">Username</label>
+                <input type="text" id="id_username" name="username" value="{{ form.username.value|default_if_none:'' }}" placeholder="Enter you Usename" required>
+                <small class="form-error">{{ form.username.errors }}</small>
+            </div>
+
+            <div class="input_group">
+                <label for="id_password">Password</label>
+                <input type="password" id="id_password" name="password" value="{{ form.password.value|default_if_none:'' }}" placeholder="********" required>
+                <small class="form-error">{{ form.username.errors }}</small>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
     </div>
+</body>
+</html>
     
-    <div class="form-group">
-        <label for="id_password">Password</label>
-        {{ form.password }}
-        <small class="form-error">{{ form.password.errors }}</small>
-    </div>
     
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+

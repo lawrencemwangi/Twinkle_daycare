@@ -1,0 +1,34 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Childern Infor {% endblock  %}
+
+{% block content %} 
+    <h1>Childern Information</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% else %}
+        {% for child in children %}
+            <div class="child_infor">
+                <div class="child_content">
+                    <p><span>Names:</span> {{ child.first_name }} {{ child.last_name }}</p>
+                    <p><span>Date Of Birth:</span> {{ child.birth_date }}</p>
+                    <p><span>Gender:</span> {{ child.gender }}</p>
+                    <p><span>Address:</span> {{ child.address }}</p>
+                    <p><span>Emergency Contact:</span> {{ child.emg_contact }}</p>
+                    <p><span>Admission Number:</span> {{ child.admission_number }}</p>
+                </div>
+
+                <div class="child_content">
+                    <p><span>Grade:</span> {{ child.grade }}</p>
+                    <p><span>Allergies:</span> {{ child.allergies }}</p>
+                    <p><span>Allergies:</span> {{ child.allergies }}</p>
+                    <p><span>Medication:</span> {{ child.medication }}</p>
+                    <p><span>Medical Conditions:</span> {{ child.medical_conditions }}</p>
+                    <p><span>Enrollment Status:</span> {{ child.enrollment_status }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock  %}
