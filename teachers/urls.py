@@ -5,7 +5,7 @@ urlpatterns = [
     path('enroll/', views.enroll_list, name='enroll'),
     path('add_enroll/', views.add_enroll, name='enroll_child'),
     path('update_enroll/<int:pk>', views.update_enroll, name='update_enroll'),
-     path('delete_enroll/<int:pk>', views.delete_enroll, name='delete_enroll'),
+    path('delete_enroll/<int:pk>', views.delete_enroll, name='delete_enroll'),
     
     path('parent_list/', views.parent_list, name='parents'),
     path('add_parent/', views.add_parent, name='add_parents'),

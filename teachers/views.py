@@ -1,9 +1,8 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib import messages
-from .models import Parent
+from .models import Parent,Enrollment
 from authuser.models import CustomUser
 from datetime import date
-from .models import Enrollment
 
 
 # add the parent in the teachers side
@@ -56,7 +55,6 @@ def enroll_list(request):
     enrolments=Enrollment.objects.all()
     return render(request, 'enrollment/enroll_list.html',{'enrolments':enrolments})
 
-
 def add_enroll(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
@@ -103,9 +101,10 @@ def add_enroll(request):
         return redirect('enroll')  
     
     else:
-        parents = CustomUser.objects.filter(user_level='parent') 
- 
- 
+        parents = CustomUser.objects.filter(user_level='parent')
+        return render(request, 'enrollment/enrollment.html', {
+            'parents': parents
+        })
 
 def update_enroll(request,pk):
     enrollment = get_object_or_404(Enrollment,pk=pk)
@@ -114,7 +113,6 @@ def update_enroll(request,pk):
     if request.method == 'POST':
         enrollment.first_name = request.POST.get('first_name')
         enrollment.last_name = request.POST.get('last_name')
-        # enrollment.birth_date = request.POST.get('birth_date') 
         enrollment.gender = request.POST.get('gender')
         enrollment.address = request.POST.get('address', '')
         enrollment.admission_number = request.POST.get('admission_number')
@@ -128,7 +126,6 @@ def update_enroll(request,pk):
         birth_date = request.POST.get('birth_date')
         if birth_date:
             enrollment.birth_date = date.fromisoformat(birth_date)
-        # enrollment.parent_id = request.POST.get('parent')
         enrollment.save()
         messages.success(request, "Child enrollment updated successfully.")
 
