@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib import messages
-from .models import Parent,Enrollment,Incident
+from .models import Parent,Enrollment,Incident,Attendance
 from authuser.models import CustomUser
 from datetime import date
 from django.urls import reverse  
@@ -135,10 +135,8 @@ def update_enroll(request,pk):
     return render(request, 'enrollment/update_enrollment.html', {'enrollment':enrollment,'parents': parents,})
 
 
-
 def delete_enroll(request,pk):
     enrollment=get_object_or_404(Enrollment,pk=pk)
-    # cancel_url = reverse('enroll')
 
     if request.method == 'POST':
         enrollment.delete()
@@ -147,7 +145,6 @@ def delete_enroll(request,pk):
     return render(request, 'delete_confirm.html',{
         'item_type': 'Enrollment',
         'item_name': enrollment.first_name,
-        # 'cancel_url': cancel_url,
     })
         
 
@@ -221,7 +218,6 @@ def update_incident(request,pk):
 
 def delete_incident(request,pk): 
     incident = get_object_or_404(Incident, pk=pk)
-    # cancel_url = 'incident'  
     
     if request.method == 'POST':
         incident.delete()
@@ -230,14 +226,78 @@ def delete_incident(request,pk):
     
     return render(request, 'incident/delete_incident.html', {
         'item_type': 'Incident',
-        'item_name': incident.child_id, 
+        'item_name': incident.date, 
     })
 
 
 
+# Attendance for the children
+def attendance(request):
+    attendances = Attendance.objects.select_related('child').all()
+    return render(request, 'attendance/list_attendance.html',{'attendances':attendances})
+
+
+def add_attendance(request):
+    children = Enrollment.objects.all()
+
+    if request.method == 'POST':
+        child_id = request.POST.get('child')
+        date =request.POST.get('date')
+        status = request.POST.get('status')
+        arrival_time = request.POST.get('arrival_time')
+        departure_time = request.POST.get('departure_time')
+        reason_absent = request.POST.get('reason_absent')
+
+        child = get_object_or_404(Enrollment, pk=child_id)
+        Attendance.objects.update_or_create(
+            child=child,
+            date=date,
+            defaults={
+                'status': status,
+                'arrival_time': arrival_time,
+                'departure_time': departure_time
+            }
+        )
+        messages.success(request, f"Attendance recorded for {child.first_name} {child.last_name}.")
+        return redirect('attendance_list')  
+
+    return render(request, 'attendance/add_attendance.html', {'children': children})
+
+
+def update_attendance(request,pk):
+    attendance = get_object_or_404(Attendance, pk=pk)
+    children = Enrollment.objects.all()
+
+    if request.method == 'POST':
+        attendance.date = request.POST.get('date')
+        attendance.status = request.POST.get('status')
+        attendance.reason_absent = request.POST.get('reason_absent')
+        attendance.arrival_time = request.POST.get('arrival_time')
+        attendance.departure_time = request.POST.get('departure_time')
+
+        attendance.save()
+        child = attendance.child
+        messages.success(request, f"Attendance updated for {child.first_name} {child.last_name}.")
+        return redirect('attendance_list')
+    return render(request, 'attendance/update_attendance.html',{
+        'children':children,
+        'attendance':attendance,
+    })
 
 
 
+def delete_attendance(request,pk):
+    attendance = get_object_or_404(Attendance, pk=pk)
+
+    if request.method == 'POST':
+        attendance.delete()  
+        messages.success(request, 'Attendance deleted successfully.')
+        return redirect('attendance_list')
+
+    return render(request, 'attendance/delete_attendance.html', {
+        'item_type': "Attendance",
+        'item_name': attendance.date,
+    })
 
 
 

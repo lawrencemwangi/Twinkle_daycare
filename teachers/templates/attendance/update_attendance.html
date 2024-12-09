@@ -1,0 +1,66 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Attendance {% endblock  %}
+
+{% block content %}
+    <div class="custom_form">
+        <h1>Update Attendance</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="groups">
+                <div class="input_group">
+                    <label for="child">Child Name</label>
+                    <input type="text" name="child"  id="child" value="{{ attendance.child.first_name }} {{ attendance.child.last_name }}" readonly>
+
+                    {% comment %}<select name="child" id="child">
+                        <option value="">--select child name--</option>
+                        
+                        {% for child in children  %}
+                            <option value="{{ child.id }}" {% if child.id == attendance.child.id %}selected{% endif %}>
+                                {{ child.first_name }}  {{ child.last_name }}
+                            </option>
+                        {% endfor %}   
+                    </select> {% endcomment %}
+                </div>
+    
+                <div class="input_group">
+                    <label for="date">Date</label> 
+                    <input type="date" name="date" id="date" value="{{ attendance.date|date:'Y-m-d' }}" required>
+                </div>
+
+                <div class="input_group">
+                    <label for="status">Attendance status</label>
+                    <select name="status" id="status">
+                        <option value="present" {% if child.gender == 'present' %}selected{% endif %}>Present</option>
+                        <option value="absent" {% if child.gender == 'absent' %}selected{% endif %}>Absent</option>
+                        <option value="late" {% if child.gender == 'last' %}selected{% endif %}>Late</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="input_group">
+                    <label for="arrival_time">Arrival Time</label> 
+                    <input type="time" name="arrival_time" id="arrival_time" value="{{ attendance.arrival_time|time:'H:i' }}" required>
+                </div>
+
+                <div class="input_group">
+                    <label for="departure_time">Departure Time</label> 
+                    <input type="time" name="departure_time" id="departure_time" value="{{ attendance.departure_time|time:'H:i' }}" required>
+                </div>
+            </div>
+
+            <div class="input_group">
+                <label for="reason_absent">Reason (if absent)</label>
+                <textarea name="reason_absent" id="reason_absent" cols="10" rows="5" placeholder="Type the reason for absentism">
+                    {{ attendance.reason_absent }}
+                </textarea>
+            </div>
+
+            <button type="submit">Save New</button>
+        </form>
+    </div>
+{% endblock  %}

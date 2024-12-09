@@ -66,4 +66,27 @@ class Incident(models.Model):
     def __str__(self):
         return f"Incident on {self.date} for {self.child.first_name} {self.child.last_name}"
 
+
+class Attendance(models.Model):
+    STATUS_CHOICES = [
+        ('present' , 'present'),
+        ('Late', 'late'),
+        ('absent', 'absent')
+    ]
+
+    child = models.ForeignKey('Enrollment', null=True, blank=True, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='absent')
+    arrival_time = models.TimeField(null=True, blank=True)
+    departure_time = models.TimeField(null=True, blank=True)
+    reason_absent =models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Attendance on {self.date} for {self.child.first_name} {self.child.last_name} - {self.get_status_display()}"
+
+    def is_complete(self):
+        if self.arrival_time and self.departure_time and self.arrival_time >= self.departure_time:
+            raise ValidationError("Arrival time must be earlier than departure time.")
+    
+
     

@@ -16,4 +16,9 @@ urlpatterns = [
     path('add_incident/', views.add_incident, name='add_incidents'),
     path('update_incident/<int:pk>',views.update_incident, name='update_incident'),
     path('delete_incident/<int:pk>', views.delete_incident, name='delete_incident'),
+
+    path('attendance/', views.attendance, name='attendance_list'),
+    path('add_attendance/', views.add_attendance, name='add_attendances'),
+    path('update_attendance/<int:pk>', views.update_attendance, name='update_attendance'),
+    path('delete_attendance/<int:pk>', views.delete_attendance, name='delete_attendance'),
 ]

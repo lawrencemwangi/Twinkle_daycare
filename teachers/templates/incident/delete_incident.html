@@ -3,7 +3,7 @@
 
 {% block content %}
     {% with "Incident" as item_type %}
-        {% with incident.child_id as item_name %}
+        {% with incident.date as item_name %}
             {{ block.super }}
         {% endwith %}
     {% endwith %}

@@ -1,0 +1,8 @@
+{% extends "delete_confirm.html" %}
+{% load static %}
+
+{% block content %}
+    {% with item_type="Attendance" item_name=attendance.date %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}

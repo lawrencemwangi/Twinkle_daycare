@@ -32,7 +32,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{% url 'attendance_list' %}">
                         <i class="fas fa-check-circle"></i>
                         <span>Attendance</span>
                     </a>
@@ -59,12 +59,12 @@
                     </a>
                 </li>
 
-                <li>
+                {% comment %} <li>
                     <a href="#">
                         <i class="fas fa-calendar-day"></i>
                         <span>Daily Record</span>
                     </a>
-                </li>
+                </li> {% endcomment %}
 
                 <li>
                     <a href="{%  url 'incident' %}">

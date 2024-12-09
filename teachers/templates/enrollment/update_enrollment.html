@@ -45,8 +45,9 @@
                 <label for="parent">Parent</label>
                 <select name="parent" id="parent">
                     {% for parent in parents %}
-                    <option value="{{ parent.id }}" {% if parent.id == enrollment.parent.id %}selected{% endif %}>                            {{ parent.first_name }} {{ parent.last_name }}
-                        </option>
+                    <option value="{{ parent.id }}" {% if parent.id == enrollment.parent.id %}selected{% endif %}>                            
+                        {{ parent.first_name }} {{ parent.last_name }}
+                    </option>
                     {% endfor %}
                 </select>
             </div>

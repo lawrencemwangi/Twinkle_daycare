@@ -1,0 +1,63 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Attendance {% endblock  %}
+
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        setTimeout(function() {
+            const messages = document.querySelector('.messages');
+            if (messages) {
+                messages.style.transition = 'opacity 0.5s ease';
+                messages.style.opacity = '0'; 
+                setTimeout(() => messages.remove(), 500); 
+            }
+        }, 5000);
+    </script>
+    {% endif %}
+
+    <div class="user_container">
+        <div class="title">
+            <h1>Attendance</h1>
+            <a href="{% url 'add_attendances' %}">Add New</a>
+        </div>
+        
+        <div class="user_content">
+            <div class="user_details">
+                <span  class="user-col">first Name</span>
+                <span class="user-col">Last Name </span>
+                <span class="user-col">Date</span>
+                <span class="user-col">Status</span>
+                <span class="user-col">Absence Reason</span>
+                <span class="user-col">Action</span>
+            </div>
+    
+            {% for attendance in attendances  %}
+                <div class="user_infor">
+                    <span class="user-col">{{ attendance.child.first_name }}</span>
+                    <span class="user-col">{{ attendance.child.last_name }}</span>
+                    <span class="user-col">{{ attendance.date }}</span>
+                    <span class="user-col">{{ attendance.status }}</span>
+                    <span class="user-col">{{ attendance.reason_absent }}</span>
+                    <span class="action">
+                        <a href="{% url 'update_attendance' attendance.pk %}">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+
+                        <form method="post">
+                            <a href="{% url 'delete_attendance' attendance.pk %}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </form>
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock  %}
