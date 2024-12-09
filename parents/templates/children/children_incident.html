@@ -1,0 +1,22 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Childern Incident {% endblock  %}
+
+{% block content %} 
+    <h1>Childern Incident </h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% else %}
+        {% for incident in incidents %}
+            <div class="child_infor">
+                <div class="child_content">
+                    <p><span>Names:</span> {{ incident.child.first_name }} {{ incident.child.last_name }}</p>
+                    <p><span>Date:</span> {{ incident.date }}</p>
+                    <p><span>Incident:</span> {{ incident.incident }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock  %}

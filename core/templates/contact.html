@@ -4,6 +4,23 @@
 {% block title %} Contact Us {% endblock  %}
 
 {% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        <script>
+            setTimeout(function() {
+                const messages = document.querySelector('.messages');
+                if (messages) {
+                    messages.style.transition = 'opacity 0.5s ease';
+                    messages.style.opacity = '0'; 
+                    setTimeout(() => messages.remove(), 500); 
+                }
+            }, 5000);
+        </script>
+    {% endif %}
     <div class="main_container">
         <h2>Contact Us</h2>
         <div class="contact_container">
@@ -13,20 +30,21 @@
             </div>
 
             <div class="contact_form">
-                <form action="#" method="post">
+                <form  method="post">
+                    {% csrf_token %}
                     <div class="input_group">
                         <div class="input_content">
-                            <input type="text" name="names" id="names"  required>
-                            <label for="names"><i class="fas fa-user-alt"></i>Names</label>
+                            <label for="name">Names</label>
+                            <input type="text" name="name" id="name" placeholder="Enter your Names" required>
                         </div>
 
                         <div class="input_content">
-                            <input type="email" name="email" id="email" required >
-                            <label for="email"><i class="fas fa-envelope"></i>Email</label>
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email"  placeholder="Enter your Email" required>
                         </div>
                         <div class="input_content">
-                            <textarea name="message" id="message" cols="7" rows="6" required></textarea>
-                            <label for="first_name"><i class="fas fa-comments"></i>Message</label>
+                            <label for="first_name">Message</label>
+                            <textarea name="message" id="message" cols="7" rows="6" placeholder="Type your Message" required></textarea>
                         </div>
                     </div>
                     <button type="submit">Submit</button>

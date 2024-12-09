@@ -1,0 +1,28 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Childern Attendance {% endblock  %}
+
+{% block content %} 
+    <h1>Childern Attendance</h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% else %}
+        {% for attendance in attendances %}
+            <div class="child_infor">
+                <div class="child_content">
+                    <p><span>Names:</span> {{ attendance.child.first_name }} {{ attendance.child.last_name }}</p>
+                    <p><span>Date:</span> {{ attendance.date }}</p>
+                    <p><span>Arrival Time:</span> {{ attendance.arrival_time }}</p>
+                </div>
+                
+                <div class="child_content">
+                    <p><span>Departure Time:</span> {{ attendance.departure_time }}</p>
+                    <p><span>Status:</span> {{ attendance.status }}</p>
+                    <p><span>Reson for Absence:</span> {{ attendance.reason_absent }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock  %}
