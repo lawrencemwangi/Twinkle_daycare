@@ -1,0 +1,42 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Update Incident {% endblock  %}
+
+{% block content %}
+    <div class="custom_form">
+        <h1>Add Incident</h1>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <form  method="post">
+            {% csrf_token %}
+
+            <div class="group">
+                <div class="input_group">
+                    <label for="child">Child</label>
+                    <select id="child" name="child">
+                        {% for child in children %}
+                            <option value="{{ child.id }}" {% if child.id == incident.child.id %} selected {% endif %}>
+                                {{ child.first_name }} {{ child.last_name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+    
+                <div class="input_group">
+                    <label for="date">Incident Date</label>
+                    <input type="date" name="date" id="date" value="{{ incident.date|date:'Y-m-d' }}" required>        
+                </div>
+            </div>
+           
+            <div class="input_group">
+                <label for="incident">Incident</label>
+                <textarea name="incident" id="incident" cols="7" rows="5"  placeholder="Type the incident">{{ incident.incident }}</textarea>
+            </div>
+
+            <button type="submit">Save New</button>
+        </form>
+    </div>
+{% endblock  %}

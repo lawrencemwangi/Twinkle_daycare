@@ -57,4 +57,13 @@ class Enrollment(models.Model):
         return f'{self.first_name} {self.last_name}'
 
 
+
+class Incident(models.Model):
+    child = models.ForeignKey('Enrollment', null=True, blank=True, on_delete=models.CASCADE)
+    date = models.DateField()
+    incident = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return f"Incident on {self.date} for {self.child.first_name} {self.child.last_name}"
+
     

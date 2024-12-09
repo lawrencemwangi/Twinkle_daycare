@@ -1,8 +1,9 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.contrib import messages
-from .models import Parent,Enrollment
+from .models import Parent,Enrollment,Incident
 from authuser.models import CustomUser
 from datetime import date
+from django.urls import reverse  
 
 
 # add the parent in the teachers side
@@ -39,6 +40,7 @@ def update_parent(request,pk):
 
 def delete_parent(request,pk):
     parent=get_object_or_404(Parent,pk=pk)
+    cancel_url = 'enroll'
     if request.method == 'POST':
         parent.delete()
         messages.success(request, "Parent deleted successfully.")
@@ -136,6 +138,8 @@ def update_enroll(request,pk):
 
 def delete_enroll(request,pk):
     enrollment=get_object_or_404(Enrollment,pk=pk)
+    # cancel_url = reverse('enroll')
+
     if request.method == 'POST':
         enrollment.delete()
         messages.success(request, "Enrollment deleted successfully.")
@@ -143,8 +147,94 @@ def delete_enroll(request,pk):
     return render(request, 'delete_confirm.html',{
         'item_type': 'Enrollment',
         'item_name': enrollment.first_name,
+        # 'cancel_url': cancel_url,
     })
         
+
+
+# incident report logics
+def incident(request):
+    incidents = Incident.objects.select_related('child').all()
+    return render(request, 'incident/list_incident.html', {'incidents': incidents,})
+
+
+def add_incident(request):
+    children = Enrollment.objects.all()  
+    if request.method == 'POST':
+        child_id = request.POST.get('child')
+        date = request.POST.get('date')
+        incident = request.POST.get('incident')
+
+        if not child_id or not date or not incident:
+            return render(request, 'incident/add_incident.html', {
+                'error': 'All fields are required!',
+                'children': children,
+            })
+
+        child = get_object_or_404(Enrollment, id=child_id)
+        Incident.objects.create(
+            child=child,
+            date=date,
+            incident=incident,
+        )
+        messages.success(request, 'Incident added successfully.')
+
+        return redirect('incident')  
+
+    return render(request, 'incident/add_incident.html', {'children': children})
+
+
+
+def update_incident(request,pk):
+    incident = get_object_or_404(Incident, pk=pk)
+    child = incident.child 
+    children = Enrollment.objects.all()
+
+    if request.method == 'POST':
+        child_id = request.POST.get('child')
+        date = request.POST.get('date')
+        incident_text = request.POST.get('incident')
+
+        if not child_id or not date or not incident_text:
+            messages.error(request, 'All fields are required!')
+            return redirect('update_incident', pk=pk)
+
+        if child_id.isnumeric():
+            incident.child_id = int(child_id)  
+        else:
+            messages.error(request, 'Invalid child ID.')
+            return redirect('update_incident', pk=pk)
+
+        incident.date = date
+        incident.incident = incident_text
+        incident.save()
+
+        messages.success(request, 'Incident updated successfully')
+        return redirect('incident')
+
+    return render(request, 'incident/update_incident.html', {
+        'incident': incident,
+        'child': child,
+        'children': children
+    })
+
+
+def delete_incident(request,pk): 
+    incident = get_object_or_404(Incident, pk=pk)
+    # cancel_url = 'incident'  
+    
+    if request.method == 'POST':
+        incident.delete()
+        messages.success(request, 'Incident deleted successfully')
+        return redirect('incident')  
+    
+    return render(request, 'incident/delete_incident.html', {
+        'item_type': 'Incident',
+        'item_name': incident.child_id, 
+    })
+
+
+
 
 
 

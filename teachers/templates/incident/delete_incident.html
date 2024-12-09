@@ -1,0 +1,10 @@
+{% extends "delete_confirm.html" %}
+{% load static %}
+
+{% block content %}
+    {% with "Incident" as item_type %}
+        {% with incident.child_id as item_name %}
+            {{ block.super }}
+        {% endwith %}
+    {% endwith %}
+{% endblock %}

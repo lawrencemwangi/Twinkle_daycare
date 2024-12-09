@@ -12,5 +12,8 @@ urlpatterns = [
     path('update_parent/<int:pk>',views.update_parent,name='update_parent'),
     path('delete_parent/<int:pk>',views.delete_parent,name='delete_parent'),
 
-
+    path('incident/', views.incident, name='incident'),
+    path('add_incident/', views.add_incident, name='add_incidents'),
+    path('update_incident/<int:pk>',views.update_incident, name='update_incident'),
+    path('delete_incident/<int:pk>', views.delete_incident, name='delete_incident'),
 ]

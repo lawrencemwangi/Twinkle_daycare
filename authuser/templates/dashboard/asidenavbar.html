@@ -17,12 +17,12 @@
                     </a>
                 </li>
 
-                <li>
+                {% comment %} <li>
                     <a href="{% url 'parents' %}">
                         <i class="fas fa-user-plus"></i>
                         <span>Parent</span>
                     </a>
-                </li>
+                </li> {% endcomment %}
 
                 <li>
                     <a href="{% url 'enroll' %}">
@@ -67,9 +67,9 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{%  url 'incident' %}">
                         <i class="fas fa-clipboard-list"></i>
-                        <span>Incident Rports</span>
+                        <span>Incident Reports</span>
                     </a>
                 </li>
 
