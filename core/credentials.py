@@ -11,6 +11,9 @@ class MpesaC2bCredential:
     consumer_secret = os.getenv("MPESA_CONSUMER_SECRET")
     api_url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
 
+    if not all([consumer_key, consumer_secret]):
+        raise ValueError("MPESA credentials missing or not loaded correctly.")
+
     @staticmethod
     def get_mpesa_access_token():
         consumer_key = MpesaC2bCredential.consumer_key
@@ -45,7 +48,7 @@ class LipanaMpesaPpassword:
     lipa_time = datetime.now().strftime('%Y%m%d%H%M%S')
     Business_short_code = "174379"
     OffSetValue = '0'
-    passkey = os.getenv("MPESA_PASSKEY")
+    passkey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
 
     data_to_encode = Business_short_code + passkey + lipa_time
 

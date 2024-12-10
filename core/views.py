@@ -42,14 +42,25 @@ def contact(request):
 def token(request):
     consumer_key = os.getenv("MPESA_CONSUMER_KEY")
     consumer_secret = os.getenv("MPESA_CONSUMER_SECRET")
-    api_url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials" 
+    api_url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
 
-    r = requests.get(api_URL, auth=HTTPBasicAuth(
-        consumer_key, consumer_secret))
-    mpesa_access_token = json.loads(r.text)
-    validated_mpesa_access_token = mpesa_access_token["access_token"]
+    if not consumer_key or not consumer_secret:
+        return HttpResponse("Missing MPESA credentials.", status=500)
 
-    return render(request, 'token.html', {"token":validated_mpesa_access_token})
+    try:
+        r = requests.get(api_url, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+        r.raise_for_status()  
+        mpesa_access_token = r.json()
+    except requests.exceptions.RequestException as e:
+        return HttpResponse(f"Failed to fetch access token: {str(e)}", status=500)
+    except json.JSONDecodeError:
+        return HttpResponse("Invalid response from MPESA API.", status=500)
+
+    validated_mpesa_access_token = mpesa_access_token.get("access_token")
+    if not validated_mpesa_access_token:
+        return HttpResponse("Access token not found in MPESA API response.", status=500)
+
+    return render(request, 'token.html', {"token": validated_mpesa_access_token})
 
 
 def pay(request):
@@ -74,18 +85,15 @@ def pay(request):
             "TransactionDesc": "Fees Charges"
         }
 
-        try:
-            response = requests.post(api_url, json=payment_data, headers=headers)
+        response = requests.post(api_url, json=payment_data, headers=headers)
+        if response.status_code == 200:
+            return HttpResponse("Payment success")
+        else:
+            print(response.text)  
+            return HttpResponse(f"Payment failed with status code {response.status_code}: {response.text}", status=500)
 
-            if response.status_code == 200:
-                return HttpResponse("Payment success")
-            else:
-                return HttpResponse(f"Payment failed with status code {response.status_code}", status=500)
-        
-        except requests.RequestException as e:
-            return HttpResponse(f"Error occurred while making payment request: {str(e)}", status=500)
 
-    return HttpResponse("Invalid request method. Please use POST.", status=400)
+            return HttpResponse("Invalid request method. Please use POST.", status=400)
 
 
 def stk(request):

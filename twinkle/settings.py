@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from decouple import config
 
 # Load environment variables from .env file
 load_dotenv()
@@ -157,11 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authuser.CustomUser'
 
-MPESA_CONSUMER_KEY = os.getenv("MPESA_CONSUMER_KEY")
-MPESA_CONSUMER_SECRET = os.getenv("MPESA_CONSUMER_SECRET")
-MPESA_API_URL = os.getenv("MPESA_API_URL")
-MPESA_ENVIRONMENT = os.getenv("MPESA_ENVIRONMENT", "sandbox")
-MPESA_PASSKEY = os.getenv("MPESA_PASSKEY")
-MPESA_URL =os.getenv("MPESA_URL")
-MPESA_ACCESS_TOKEN_API_URL = os.getenv("MPESA_ACCESS_TOKEN_API_URL")
-MPESA_STK_PUSH_API_URL = os.getenv("MPESA_STK_PUSH_API_URL")
+MPESA_CONSUMER_KEY = config("MPESA_CONSUMER_KEY")
+MPESA_CONSUMER_SECRET = config("MPESA_CONSUMER_SECRET")
+MPESA_PASSKEY = config("MPESA_PASSKEY")
+
