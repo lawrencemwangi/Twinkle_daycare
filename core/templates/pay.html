@@ -1,0 +1,43 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load static %}
+
+{% block title %} Payment {% endblock  %}
+
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <script>
+        setTimeout(function() {
+            const messages = document.querySelector('.messages');
+            if (messages) {
+                messages.style.transition = 'opacity 0.5s ease';
+                messages.style.opacity = '0'; 
+                setTimeout(() => messages.remove(), 500); 
+            }
+        }, 5000);
+    </script>
+    {% endif %}
+    <div class="custom_form">
+        <h1>Payment</h1>
+
+        <form action="{% url 'pay' %}" method="POST">
+            {% csrf_token %}
+
+            <div class="input_group">
+                <label for="number">Phone Number</label>
+                <input type="number" name="number" id="number" value="254">
+            </div>
+
+            <div class="input_group">
+                <label for="amount">Amount</label>
+                <input type="number" name="amount" id="amount" value="Enter the amount">
+            </div>
+
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+{% endblock  %}

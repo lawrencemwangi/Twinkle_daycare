@@ -82,23 +82,16 @@
                 </li>
 
                 <li>
-                    <a href="#">
-                        <i class="fas fa-wallet"></i>
-                        <span>Payment</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fas fa-file"></i>
-                        <span>Reports</span>
+                    <a href="{% url 'child_finance' %}">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Fee Structure</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{% url 'child_incident' %}">
                         <i class="fas fa-clipboard-list"></i>
-                        <span>Incident Rports</span>
+                        <span>Incident Reports</span>
                     </a>
                 </li>
             {% endif %}

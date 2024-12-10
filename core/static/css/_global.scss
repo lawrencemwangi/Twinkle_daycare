@@ -86,3 +86,13 @@ body{
     flex-direction: column;
     min-height: 100vh;    
 }
+
+.btn{
+    padding: 0.3em 0.9em;
+    background: $secondary-color;
+    color: $primary-color;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    margin-top: 0.9em;
+}

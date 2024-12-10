@@ -1,0 +1,27 @@
+{% extends "dashboard/dashboard.html" %}
+{% load static %}
+
+{% block title %} Childern Finance {% endblock  %}
+
+{% block content %} 
+    <h1>Childern Finance </h1>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% else %}
+        {% for finance in finances %}
+            <div class="child_infor">
+                <div class="child_content">
+                    <p><span>Class Name:</span> {{ finance.class_name }}</p>
+                    <p><span>Term:</span> {{ finance.term }}</p>
+                    <p><span>Academic Year:</span> {{ finance.academic_year }}</p>
+                    <p><span>Due Date:</span> {{ finance.due_date }}</p>
+                    <p><span>Fees Breakdown:</span> {{ finance.fees_breakdown }}</p>
+                    <p><span>Total Fees:</span> {{ finance.total_fees }}</p>
+                    
+                    <a href="{% url 'stk' %}" class="btn">Pay Now</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock  %}

@@ -89,6 +89,16 @@ body {
   min-height: 100vh;
 }
 
+.btn {
+  padding: 0.3em 0.9em;
+  background: #000000;
+  color: #F8F4F9;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 8px;
+  margin-top: 0.9em;
+}
+
 form input,
 form textarea,
 form select {

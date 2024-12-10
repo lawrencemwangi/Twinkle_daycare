@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from teachers.models import Enrollment,Attendance,Incident
+from customadmin.models import Finance
 
 # Create your views here.
 
@@ -23,7 +24,6 @@ def child_attendace(request):
 
     if not attendances.exists():
         return render(request, 'children/children_attendance.html', {'error': 'No child attendance details found'})
-        print(attendances)
 
     return render(request, 'children/children_attendance.html', {'attendances': attendances})
 
@@ -38,6 +38,15 @@ def child_incident(request):
     
     if not incidents.exists():
         return render(request, 'children/children_incident.html', {'error': 'No child attendance details found'})
-        print(attendances)
 
     return render(request, 'children/children_incident.html', {'incidents': incidents})
+
+def child_finance(request):
+    parent = request.user
+
+    finances = Finance.objects.all()
+
+    if not finances.exists():
+        return render(request, 'children/children_finance.html', {'error': 'No child attendance details found'})
+
+    return render(request, 'children/children_finance.html', {'finances': finances})
